@@ -1,4 +1,4 @@
-package vazha_tsaava.java_core_chapter_15;
+package vazha_tsaava.java_core_chapter_15_lambda;
 
 public class LyambdaArgument {
     public LyambdaArgument() {
