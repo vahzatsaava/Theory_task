@@ -8,22 +8,26 @@ public class MupExample2 {
     public static void main(String[] args) {
         //применить метод mup для создания нового потока данных,
         //содержащего только избранные Элементы
-        List<NamePhoneEmail> list = new ArrayList<>();
-        list.add(new NamePhoneEmail("Larry","554545","rere@"));
-        list.add(new NamePhoneEmail("Tom","5-77-45","out"));
-        list.add(new NamePhoneEmail("Merry","55465-665","int@"));
+        List<NamePhoneEmail2> list = new ArrayList<>();
+        list.add(new NamePhoneEmail2("Larry","554545","rere@"));
+        list.add(new NamePhoneEmail2("Tom","5-77-45","out"));
+        list.add(new NamePhoneEmail2("Merry","55465-665","int@"));
         list.stream().forEach(a->{
             System.out.println(a.getName() + " " + a.getPhone() + " " + a.getMail());
         });
         //отображаем только имена и номера телефонов
-        Stream<NamePhone> stream = list.stream().map(a -> new NamePhone(a.getName(), a.getPhone()));
+        Stream<NamePhone2> stream = list.stream().map(a -> new NamePhone2(a.getName(), a.getPhone()));
         System.out.println();
         System.out.println("Список с именами и телефонами");
         System.out.println();
         stream.forEach(a-> System.out.println(a.getName() + " " + a.getPhone()));
         //вывод в одну строку
-        list.stream().map(a -> new NamePhone(a.getMail(), a.getPhone()))
+        list.stream().map(a -> new NamePhone2(a.getMail(), a.getPhone()))
                 .forEach(a-> System.out.println(a.getName() + " " + a.getPhone()));
+        Stream<NamePhone2> namePhoneStream = list.stream()
+                .filter((a) ->a.getName().equals("Tom"))
+                .map(a-> new NamePhone2(a.getName(),a.getPhone()));
+        System.out.println(namePhoneStream);
 
     }
 }
